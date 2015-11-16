@@ -1,0 +1,13 @@
+body{
+    width:750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table{
+    width:100%;
+    text-align: left;
+}
+th {
+    font-size:1.3em;
+}
