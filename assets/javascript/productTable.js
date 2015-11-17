@@ -9,10 +9,12 @@ function expand(start, end){
 
 var ProductRow = React.createClass({
    render: function(){
+       var id = this.props.product.id;
        var name = this.props.product.name;
        var price = this.props.product.price;
        return (
            <tr className="productRow">
+               <td className="productID">{id}</td>
                <td className="productName">{name}</td>
                <td className="productPrice">€{price}</td>
            </tr>
@@ -53,6 +55,7 @@ var ProductTable = React.createClass({
                 <table>
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Name</th>
                             <th>Price</th>
                         </tr>
@@ -61,6 +64,7 @@ var ProductTable = React.createClass({
                         {
                             this.props.products
                                 .filter(this.productMatchesSearch)
+                                .slice(this.props.currentPage*this.props.pageSize, (1+this.props.currentPage)*this.props.pageSize)
                                 .map(function(product){
                                     return <ProductRow key={product.id} product={product}/>
                                 })
@@ -110,6 +114,7 @@ var FilterableProductTable = React.createClass({
                 <SearchBar filterText={this.state.filterText} inputCallback={this.handleSearch}/>
                 <ProductTable products={this.props.products}
                               filterText={this.state.filterText}
+                              currentPage={this.state.currentPage}
                               pageSize="9"
                 />
             </div>
