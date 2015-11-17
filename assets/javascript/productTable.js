@@ -23,6 +23,11 @@ var ProductRow = React.createClass({
 });
 
 var Pager = React.createClass({
+    generateClickHandler:function(pageNumber, props){
+        return function(){
+            props.pageClickCallback(pageNumber-1);
+        }
+    },
     render: function(){
         return (
             <div className="pager">
@@ -30,15 +35,24 @@ var Pager = React.createClass({
                 {
                 expand(1, this.props.numberOfPages)
                     .map(function(pageNumber){
-                        return <a className="pagerPageNumber"
-                                  key={"pagerPageId"+pageNumber}>
-                            {pageNumber}
-                        </a>
-                    })
-            }
-                    <a className="pagerPageNumber"> &gt; </a>
+                        return <PageNumber key={"pagerPageId"+pageNumber}
+                                           pageNumber={pageNumber}
+                                           pageClickCallback={this.generateClickHandler(pageNumber, this.props)}
+                        />
+                    }.bind(this))
+                }
+                <a className="pagerPageNumber"> &gt; </a>
             </div>
         )
+    }
+});
+
+var PageNumber = React.createClass({
+    render: function(){
+        return <a className="pagerPageNumber"
+            onClick={this.props.pageClickCallback}>
+            {this.props.pageNumber}
+        </a>
     }
 });
 
@@ -47,7 +61,11 @@ var ProductTable = React.createClass({
         return product.name.toLowerCase().indexOf(this.props.filterText.toLowerCase())!=-1;
     },
     calculateAmountOfPages: function(){
-        return Math.ceil(this.props.products.length/this.props.pageSize);
+        return Math.ceil(this.getFilteredProducts().length/this.props.pageSize);
+    },
+    getFilteredProducts:function(){
+        return this.props.products
+            .filter(this.productMatchesSearch);
     },
     render: function(){
         return (
@@ -62,8 +80,7 @@ var ProductTable = React.createClass({
                     </thead>
                     <tbody>
                         {
-                            this.props.products
-                                .filter(this.productMatchesSearch)
+                            this.getFilteredProducts()
                                 .slice(this.props.currentPage*this.props.pageSize, (1+this.props.currentPage)*this.props.pageSize)
                                 .map(function(product){
                                     return <ProductRow key={product.id} product={product}/>
@@ -71,7 +88,8 @@ var ProductTable = React.createClass({
                         }
                     </tbody>
                 </table>
-                <Pager numberOfPages={this.calculateAmountOfPages()} />
+                <Pager numberOfPages={this.calculateAmountOfPages()}
+                       pageClickCallback={this.props.pageClickCallback}/>
             </div>
         )
     }
@@ -99,7 +117,14 @@ var SearchBar = React.createClass({
 var FilterableProductTable = React.createClass({
     handleSearch:function(filterText){
         this.setState({
-            filterText: filterText
+            filterText: filterText,
+            currentPage:0
+        });
+    },
+    handlePageClick:function(pageNumber){
+        this.setState({
+            filterText: this.state.filterText,
+            currentPage:pageNumber
         });
     },
     getInitialState: function(){
@@ -116,6 +141,7 @@ var FilterableProductTable = React.createClass({
                               filterText={this.state.filterText}
                               currentPage={this.state.currentPage}
                               pageSize="9"
+                              pageClickCallback={this.handlePageClick}
                 />
             </div>
         );
