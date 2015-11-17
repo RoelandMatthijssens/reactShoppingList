@@ -11,3 +11,12 @@ table{
 th {
     font-size:1.3em;
 }
+
+.pager{
+    width:100%;
+    text-align: right;
+}
+
+.pagerPageNumber{
+    padding:2px;
+}
