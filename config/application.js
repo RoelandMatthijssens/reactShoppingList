@@ -3,6 +3,7 @@ var packageJson = require('../package.json');
 var path        = require('path');
 var express     = require('express');
 var bodyParser  = require('body-parser');
+var methodOverride  = require('method-override');
 
 console.log('Loading App in '+env+' mode.');
 
@@ -34,7 +35,7 @@ function route(path){
 
 //Initialize the middleware
 App.app.use(bodyParser.urlencoded({extended: true})); //Add attributes to request object
-//App.app.use(express.methodOverride()); //CRUD operations by adding <input type="hidden" name="_method" value="DELETE">
+App.app.use(methodOverride()); //CRUD operations by adding <input type="hidden" name="_method" value="DELETE">
 App.app.use(express.static(App.appPath('/assets')));
 
 //Initialize the routes
