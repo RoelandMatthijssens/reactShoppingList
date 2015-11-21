@@ -1,0 +1,21 @@
+{
+  "name": "Shopping-list-with-react",
+  "description": "New implementation of the shoppingList using node.js and react",
+  "version": "0.0.1",
+  "author": "Roeland Matthijssens",
+  "main": "./server.js",
+  "maintainers": [
+    {
+      "name": "Roeland Matthijssens",
+      "email": "roeland.matthijssens@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  },
+  "engines": {
+    "node": "4.2.2",
+    "npm": "2.14.x"
+  }
+}
