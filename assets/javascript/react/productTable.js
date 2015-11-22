@@ -148,9 +148,6 @@ var FilterableProductTable = React.createClass({
     }
 });
 
-$.getJSON("products.json", function(data){
-    ReactDOM.render(
-        <FilterableProductTable products={data}/>,
-        document.getElementById("container")
-    );
-});
+module.exports = {
+    FilterableProductTable: FilterableProductTable
+};
