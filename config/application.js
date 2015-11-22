@@ -1,9 +1,10 @@
-var env         = process.env.NODE_ENV || 'development';
-var packageJson = require('../package.json');
-var path        = require('path');
-var express     = require('express');
-var bodyParser  = require('body-parser');
+var env             = process.env.NODE_ENV || 'development';
+var packageJson     = require('../package.json');
+var path            = require('path');
+var express         = require('express');
+var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
+var babelMiddleware = require('babel-connect');
 
 console.log('Loading App in '+env+' mode.');
 
@@ -32,6 +33,12 @@ function start(){
 function route(path){
     return App.require('app/routes/'+path);
 }
+
+//Use Jade for views
+App.app.set('views', App.appPath("app/views"));
+App.app.set('view engine', 'jade');
+App.app.set('view options', {pretty: env==='development'});
+
 
 //Initialize the middleware
 App.app.use(bodyParser.urlencoded({extended: true})); //Add attributes to request object
