@@ -4,7 +4,6 @@ var path            = require('path');
 var express         = require('express');
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
-var babelMiddleware = require('babel-connect');
 
 console.log('Loading App in '+env+' mode.');
 
