@@ -27,5 +27,27 @@
   {"id":26, "name":"Blanc de blanc", "price":11.5},
   {"id":27, "name":"Bloemkool (diepvries) groenten", "price":11.5},
   {"id":28, "name":"Bloemkool (vers) groenten", "price":11.5},
-  {"id":29, "name":"Bloemsuiker", "price":11.5}
+  {"id":29, "name":"Bloemsuiker", "price":11.5},
+  {"id":30, "name":"Body Lotion", "price":11.5},
+  {"id":31, "name":"Bonen (diepvries) groenten", "price":11.5},
+  {"id":32, "name":"Boontjes (blik) groenten", "price":11.5},
+  {"id":33, "name":"borrelnootjes (rood, cocktail) knabbels", "price":11.5},
+  {"id":34, "name":"Borrelnootjes Oranje knabbels", "price":11.5},
+  {"id":35, "name":"Borstel (haren)", "price":11.5},
+  {"id":36, "name":"Boter (bakken)", "price":11.5},
+  {"id":37, "name":"Boter Becel Light (blauw) op de boterham", "price":11.5},
+  {"id":38, "name":"Boter Solo (bakken 500gr)", "price":11.5},
+  {"id":39, "name":"Bouillonblokjes groenten", "price":11.5},
+  {"id":40, "name":"Bouillonblokjes kip", "price":11.5},
+  {"id":41, "name":"Bouillonblokjes rund", "price":11.5},
+  {"id":42, "name":"Brocoli (diepvries) groenten", "price":11.5},
+  {"id":43, "name":"Brocoli vers groenten", "price":11.5},
+  {"id":44, "name":"Brocolimix (diepvries) groenten", "price":11.5},
+  {"id":45, "name":"Brood  afbak croissantjes/chocoladebroodjes", "price":11.5},
+  {"id":46, "name":"brood (4 x hamburgers)", "price":11.5},
+  {"id":47, "name":"Brood (afbakbroodjes)", "price":11.5},
+  {"id":48, "name":"Brood (Androes)", "price":11.5},
+  {"id":49, "name":"Brood (Sandwiches)", "price":11.5}
 ]
+
+

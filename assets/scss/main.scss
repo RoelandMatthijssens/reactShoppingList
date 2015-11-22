@@ -1,3 +1,4 @@
+$highlightColor: #5cbfed;
 body{
   width: 750px;
   margin-left: auto;
@@ -20,4 +21,11 @@ th{
 
 .pagerPageNumber {
   padding: 2px;
+  cursor: pointer;
+  &:hover{
+    color: $highlightColor;
+  }
+  &.active{
+    color: $highlightColor;
+  }
 }

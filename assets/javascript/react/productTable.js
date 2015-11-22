@@ -1,11 +1,5 @@
-function expand(start, end){
-    var result = [];
-    while(start<=end){
-        result.push(start);
-        start++;
-    }
-    return result;
-}
+var SearchBar = require('./searchBar');
+var Pager = require('./pager');
 
 var ProductRow = React.createClass({
    render: function(){
@@ -20,40 +14,6 @@ var ProductRow = React.createClass({
            </tr>
        )
    }
-});
-
-var Pager = React.createClass({
-    generateClickHandler:function(pageNumber, props){
-        return function(){
-            props.pageClickCallback(pageNumber-1);
-        }
-    },
-    render: function(){
-        return (
-            <div className="pager">
-                <a className="pagerPageNumber"> &lt; </a>
-                {
-                expand(1, this.props.numberOfPages)
-                    .map(function(pageNumber){
-                        return <PageNumber key={"pagerPageId"+pageNumber}
-                                           pageNumber={pageNumber}
-                                           pageClickCallback={this.generateClickHandler(pageNumber, this.props)}
-                        />
-                    }.bind(this))
-                }
-                <a className="pagerPageNumber"> &gt; </a>
-            </div>
-        )
-    }
-});
-
-var PageNumber = React.createClass({
-    render: function(){
-        return <a className="pagerPageNumber"
-            onClick={this.props.pageClickCallback}>
-            {this.props.pageNumber}
-        </a>
-    }
 });
 
 var ProductTable = React.createClass({
@@ -89,28 +49,10 @@ var ProductTable = React.createClass({
                     </tbody>
                 </table>
                 <Pager numberOfPages={this.calculateAmountOfPages()}
+                       currentPage = {this.props.currentPage}
                        pageClickCallback={this.props.pageClickCallback}/>
             </div>
         )
-    }
-});
-
-var SearchBar = React.createClass({
-    changeHandler: function(){
-        this.props.inputCallback(this.refs.filterTextInput.value);
-    },
-    render: function(){
-        return (
-            <form className="searchBar">
-                <input type="text"
-                       ref="filterTextInput"
-                       placeholder="Search..."
-                       value={this.props.filterText}
-                       onChange={this.changeHandler}
-                />
-            </form>
-        );
-
     }
 });
 
@@ -148,6 +90,4 @@ var FilterableProductTable = React.createClass({
     }
 });
 
-module.exports = {
-    FilterableProductTable: FilterableProductTable
-};
+module.exports = FilterableProductTable;

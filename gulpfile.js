@@ -21,12 +21,14 @@ gulp.task('sass', function(){
 });
 
 gulp.task('javascript', function(){
+    console.log("Recompiling javascript");
     return gulp.src('assets/javascript/src/*.js')
         .pipe(concat('main.js'))
         .pipe(gulp.dest('assets/javascript/dist'));
 });
 
 gulp.task('react', function(){
+    console.log("Recompiling react app");
     var bundler = browserify({
         entries: ['./assets/javascript/react/reactApp.js'], // Only need initial file, browserify finds the deps
         transform: [reactify], // We want to convert JSX to normal javascript

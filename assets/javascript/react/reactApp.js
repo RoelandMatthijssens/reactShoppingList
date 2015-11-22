@@ -1,9 +1,8 @@
-var productTable = require("./productTable");
+var FilterableProductTable = require("./productTable");
 
 $.getJSON("json/products.json", function(data){
-    console.log(productTable);
     ReactDOM.render(
-        React.createElement(productTable.FilterableProductTable, {products: data}),
+        <FilterableProductTable products={data}/>,
         document.getElementById("container")
     );
 });
