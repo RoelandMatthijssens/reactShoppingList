@@ -15,9 +15,17 @@ gulp.task('lint', function(){
 });
 
 gulp.task('sass', function(){
+    console.log("Recompiling scss");
     return gulp.src('assets/scss/*.scss')
         .pipe(sass())
         .pipe(gulp.dest("assets/css"));
+});
+
+gulp.task('css', ['sass'], function(){
+    console.log("Recompiling css");
+    return gulp.src('assets/css/*.css')
+        .pipe(concat('all.css'))
+        .pipe(gulp.dest('assets/css/dist'));
 });
 
 gulp.task('javascript', function(){
@@ -43,8 +51,8 @@ gulp.task('react', function(){
 
 gulp.task('watch', function(){
     gulp.watch('assets/javascript/src/*.js', ['javascript']);
-    gulp.watch('assets/scss/*.scss', ['sass']);
+    gulp.watch('assets/scss/*.scss', ['css']);
     gulp.watch('assets/javascript/react/*.js', ['react']);
 });
 
-gulp.task('default', ['lint', 'sass', 'javascript', 'react', 'watch']);
+gulp.task('default', ['lint', 'css', 'javascript', 'react', 'watch']);

@@ -1,0 +1,17 @@
+@import "variables";
+
+.pagerPageNumber {
+  padding: 2px;
+  cursor: pointer;
+  &:hover{
+    color: $highlightColor;
+  }
+  &.active{
+    color: $highlightColor;
+  }
+}
+
+.pager{
+  width: 100%;
+  text-align: right;
+}
