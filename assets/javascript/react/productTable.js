@@ -1,5 +1,32 @@
 var SearchBar = require('./searchBar');
 var Pager = require('./pager');
+var ActionButtonsContainer = React.createClass({
+    render: function(){
+        return (
+            <div className="actionButtonsContainer">
+                <EditButton/>
+                <RemoveButton/>
+            </div>
+        )
+    }
+});
+
+var RemoveButton = React.createClass({
+    render: function(){
+        return (
+            <i className="fa fa-trash actionButton"></i>
+        )
+    }
+});
+
+var EditButton = React.createClass({
+    render: function(){
+        return (
+            <i className="fa fa-pencil actionButton"></i>
+        )
+    }
+});
+
 
 var ProductRow = React.createClass({
    render: function(){
@@ -11,6 +38,9 @@ var ProductRow = React.createClass({
                <td className="productID">{id}</td>
                <td className="productName">{name}</td>
                <td className="productPrice">€{price}</td>
+               <td>
+                   <ActionButtonsContainer/>
+               </td>
            </tr>
        )
    }
@@ -36,6 +66,7 @@ var ProductTable = React.createClass({
                             <th>Id</th>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

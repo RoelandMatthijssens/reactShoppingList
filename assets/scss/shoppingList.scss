@@ -1,0 +1,17 @@
+.shoppingListHeader{
+  width:100%;
+  border: 1px solid black;
+  text-align: center;
+}
+.shoppingListContent{
+   width:100%;
+   border: 1px solid black;
+ }
+.shoppingListCollection>.shoppingList{
+  margin-top:5px;
+}
+
+.actionButton{
+  margin-left:10px;
+  cursor: pointer;
+}
