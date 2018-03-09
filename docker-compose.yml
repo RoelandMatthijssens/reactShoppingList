@@ -1,0 +1,10 @@
+version: '3'
+services:
+  server:
+    container_name: shoppingList
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    # volumes:
+    #   - ./:/data/src
