@@ -6,8 +6,11 @@ const models = require('./app/models');
 
 app.use(bodyParser());
 
-const userRoutes = require('./app/routes/users');
-userRoutes(app);
+const routeDefinitions = [
+    './app/routes/users',
+    './app/routes/items'
+]
+routeDefinitions.forEach(routeDefinition => require(routeDefinition)(app));
 
 models.sequelize.sync().then(() => {
     app.listen(port);
