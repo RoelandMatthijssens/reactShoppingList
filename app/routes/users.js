@@ -6,7 +6,7 @@ module.exports = function(app) {
         .get(user.list)
         .post(user.create);
 
-    app.route('/users/:userId')
+    app.route('/users/:id')
         .get(user.view)
         .post(user.update)
         .delete(user.destroy);

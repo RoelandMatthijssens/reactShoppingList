@@ -3,43 +3,43 @@
 const Models = require('../models');
 
 exports.list = function(req, res) {
-    Models.User
+    Models.Item
         .findAll()
-        .then(users => res.json(users));
+        .then(items => res.json(items));
 };
 
 exports.create = function(req, res) {
-    Models.User
+    Models.Item
         .build(req.body)
         .save()
-        .then(newUser => res.json(newUser))
+        .then(newItem => res.json(newItem))
         .catch(err => res.status(400).send(err));
 };
 
 exports.view = function(req, res) {
     let query = {id: req.params.id}
-    Models.User
+    Models.Item
         .findOne({where: query})
-        .then(user => res.json(user))
+        .then(item => res.json(item))
         .catch(err => res.status(400).send(err));
 };
 
 exports.update = function(req, res){
-    Models.User
+    Models.Item
         .findById(req.params.id)
-        .then(user => {
-            user.updateAttributes(req.body);
-            res.json(user);
+        .then(item => {
+            item.updateAttributes(req.body);
+            res.json(item);
         })
         .catch(err => res.status(400).send(err));
 };
 
 exports.destroy = function(req, res){
-    Models.User
+    Models.Item
         .findById(req.params.id)
-        .then(user => {
-            user.destroy();
-            res.json(user);
+        .then(item => {
+            item.destroy();
+            res.json(item);
         })
         .catch(err => res.status(400).send(err));
 };
