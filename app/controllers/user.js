@@ -3,17 +3,17 @@
 const Models = require('../models');
 
 exports.list = function(req, res) {
-  Models.User.findAll().then(function(users){
-    res.json(users);
-  });
+    Models.User.findAll().then(function(users){
+        res.json(users);
+    });
 };
 
 exports.create = function(req, res) {
-  Models.User.build(req.body)
-    .save()
-    .then(function(newUser){
-        res.json(newUser);
-    });
+    Models.User.build(req.body)
+        .save()
+        .then(function(newUser){
+            res.json(newUser);
+        });
 };
 
 exports.view = function(req, res) {
