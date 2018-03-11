@@ -7,8 +7,9 @@ const models = require('./app/models');
 app.use(bodyParser());
 
 const routeDefinitions = [
-    './app/routes/users',
-    './app/routes/items'
+    './app/routes/items',
+    './app/routes/shopping-list',
+    './app/routes/users'
 ]
 routeDefinitions.forEach(routeDefinition => require(routeDefinition)(app));
 
