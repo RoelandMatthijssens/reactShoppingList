@@ -1,0 +1,30 @@
+@startuml
+
+title Relationships - Class Diagram
+
+class User{
+    +String name
+    +String email
+    +Int id
+}
+
+class Household{
+    +String name
+    +String location
+}
+
+class Item{
+    +String name
+    +String image
+    +Float price
+}
+class ShoppingList{
+    +Date dueDate
+}
+
+User "*" --> "*" ShoppingList: hasAccessTo
+User "*" --> "*" Household: belongsTo
+Household "*" --> "*" ShoppingList: hasAccessTo
+ShoppingList "*" --> "*" Item: contains
+
+@enduml
