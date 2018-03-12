@@ -10,4 +10,8 @@ module.exports = function(app) {
         .get(lists.view)
         .post(lists.update)
         .delete(lists.destroy);
+
+    app.route('/shopping-lists/:id/items')
+        .get(lists.showItems)
+        .post(lists.addItem);
 };

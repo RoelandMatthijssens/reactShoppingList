@@ -7,5 +7,12 @@ module.exports = function(sequelize, DataTypes) {
         price: DataTypes.FLOAT,
     });
 
+    Item.associate = (models) => {
+        Item.belongsToMany(models.ShoppingList, {
+            through: models.ShoppingListItem,
+            foreignKey: 'itemId'
+        });
+    };
+
     return Item;
 };
