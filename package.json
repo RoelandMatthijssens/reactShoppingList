@@ -11,11 +11,30 @@
         "body-parser": "*",
         "eslint": "^4.18.2",
         "express": "^4.14.0",
+        "normalize.css": "^8.0.0",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "react-redux": "^5.0.7",
+        "redux": "^3.7.2",
+        "redux-promise": "^0.5.3",
+        "redux-thunk": "^2.2.0",
         "sequelize": "^4.13.4",
         "sqlite3": "^3.1.13"
     },
     "devDependencies": {
-        "nodemon": "^1.17.2"
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.4",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-stage-3": "^6.24.1",
+        "css-loader": "^0.28.10",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
+        "file-loader": "^1.1.11",
+        "nodemon": "^1.17.2",
+        "style-loader": "^0.20.3",
+        "webpack": "^4.1.1",
+        "webpack-cli": "^2.0.11",
+        "webpack-dev-server": "^3.1.1"
     },
     "engines": {
         "node": "4.2.6"
