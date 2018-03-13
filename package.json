@@ -4,7 +4,7 @@
     "version": "0.0.1",
     "main": "index.js",
     "scripts": {
-        "start": "node main.js"
+        "start": "node src/back/main.js"
     },
     "dependencies": {
         "body-parser": "*",
