@@ -1,17 +1,16 @@
 FROM node
 
 ENV ROOT=/data
-ENV SRC_DIR=${ROOT}/src
+WORKDIR ${ROOT}
 
-COPY package.json package-lock.json ${SRC_DIR}/
+COPY package.json package-lock.json ${ROOT}/
 RUN npm install
-WORKDIR ${SRC_DIR}
-COPY . ${SRC_DIR}
+COPY src/ ${ROOT}/src
 
 RUN set -xe \
-    && mkdir -vp ${SRC_DIR}/db/
+    && mkdir -vp ${ROOT}/db/
 
 CMD []
-ENTRYPOINT ["nodejs", "main"]
+ENTRYPOINT ["npm", "run", "start"]
 
 EXPOSE 8000

@@ -4,11 +4,11 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
-const settings = require(path.join(__dirname, '..',  '..', 'config', 'settings.js'));
+const settings = require(path.join(__dirname, '..', '..', 'config', 'settings.js'));
 const dbSettings = settings[settings.env].db;
 let sequelize;
 if (env.DATABASE_URL) {
-    sequelize = new Sequelize(env.DATABASE_URL,dbSettings);
+    sequelize = new Sequelize(env.DATABASE_URL, dbSettings);
 } else {
     sequelize = new Sequelize(dbSettings.database, dbSettings.username, dbSettings.password, dbSettings);
 }
