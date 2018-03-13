@@ -2,14 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 8000;
-const models = require('./app/models');
+const models = require('./models');
 
 app.use(bodyParser());
 
 const routeDefinitions = [
-    './app/routes/items',
-    './app/routes/shopping-list',
-    './app/routes/users'
+    './routes/items',
+    './routes/shopping-list',
+    './routes/users'
 ];
 
 routeDefinitions.forEach(routeDefinition => require(routeDefinition)(app));
