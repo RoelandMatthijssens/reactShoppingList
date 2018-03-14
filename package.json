@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "start": "node src/back/main.js",
-        "dev:back": "ENV=development nodemon --watch ./src/back/ src/back/main.js"
+        "dev:back": "ENV=development nodemon --watch ./src/back/ src/back/main.js",
+        "dev:front": "ENV=development webpack-dev-server --config=./src/config/webpack.config.js",
+        "build": "webpack --config=./src/config/webpack.config.js && cp -r src/front/static/* ./build/dist/."
     },
     "dependencies": {
         "body-parser": "*",
