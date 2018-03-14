@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-    const ShoppingList = sequelize.define("ShoppingList", {
+    const ShoppingList = sequelize.define('ShoppingList', {
         id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
         due_date: { type: DataTypes.DATE, allowNull: false }
     });
@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     ShoppingList.associate = models => {
         ShoppingList.belongsToMany(models.Item, {
             through: models.ShoppingListItem,
-            foreignKey: "shoppingListId"
+            foreignKey: 'shoppingListId'
         });
     };
 
-    return ShoppingList
+    return ShoppingList;
 };

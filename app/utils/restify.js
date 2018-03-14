@@ -6,13 +6,13 @@ const METHODS = {
     VIEW: 'view',
     UPDATE: 'update',
     DESTROY: 'destroy'
-}
+};
 
 const respondWith = (req, res, promise) => {
     return promise
         .then(data => res.json(data))
         .catch(err => res.status(400).send(err));
-}
+};
 
 const creators = {
     list: model => (req, res) => {
