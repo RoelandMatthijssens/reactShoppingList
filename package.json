@@ -4,7 +4,8 @@
     "version": "0.0.1",
     "main": "index.js",
     "scripts": {
-        "start": "node src/back/main.js"
+        "start": "node src/back/main.js",
+        "dev:back": "ENV=development nodemon --watch ./src/back/ src/back/main.js"
     },
     "dependencies": {
         "body-parser": "*",
@@ -12,6 +13,9 @@
         "express": "^4.14.0",
         "sequelize": "^4.13.4",
         "sqlite3": "^3.1.13"
+    },
+    "devDependencies": {
+        "nodemon": "^1.17.2"
     },
     "engines": {
         "node": "4.2.6"
