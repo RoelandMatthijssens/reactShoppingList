@@ -10,10 +10,11 @@ const routeDefinitions = [
     './app/routes/items',
     './app/routes/shopping-list',
     './app/routes/users'
-]
+];
+
 routeDefinitions.forEach(routeDefinition => require(routeDefinition)(app));
 
 models.sequelize.sync().then(() => {
     app.listen(port);
-    console.log('Shopping List RESTful API server started on: ' + port);
-})
+    console.log('Shopping List RESTful API server started on: ' + port); //eslint-disable-line no-console
+});
