@@ -1,10 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
-const port = process.env.PORT || 8000;
-const models = require('./models');
 
-app.use(bodyParser());
+const settings = require('../config/settings');
+const models = require('./models');
 
 const routeDefinitions = [
     './routes/items',
@@ -12,9 +10,20 @@ const routeDefinitions = [
     './routes/users'
 ];
 
-routeDefinitions.forEach(routeDefinition => require(routeDefinition)(app));
+const main = module.exports = port => {
+    const app = express();
+    app.use(bodyParser());
 
-models.sequelize.sync().then(() => {
-    app.listen(port);
-    console.log('Shopping List RESTful API server started on: ' + port); //eslint-disable-line no-console
-});
+    routeDefinitions.forEach(routeDefinition => require(routeDefinition)(app));
+
+    return models.sequelize.sync().then(() => {
+        const server = app.listen(port);
+        /* eslint-disable-next-line no-console */
+        console.log('Shopping List RESTful API server started on: ' + port);
+        return server;
+    });
+};
+
+if ( settings.env === 'production' || settings.env === 'development' ) {
+    main (settings.port);
+}
