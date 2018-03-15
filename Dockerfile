@@ -1,11 +1,9 @@
 FROM node
 
 ENV ROOT=/data
-ENV SRC_DIR=${ROOT}
+WORKDIR ${ROOT}
 
-WORKDIR ${SRC_DIR}
-
-COPY package.json package-lock.json ${SRC_DIR}/
+COPY package.json package-lock.json ${ROOT}/
 RUN npm install
 COPY src/ ${ROOT}/src
 
