@@ -3,34 +3,23 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const env = process.env.NODE_ENV || 'development';
-const settings = require(path.join(__dirname, '..', '..', 'config', 'settings.js'));
-const dbSettings = settings[settings.env].db;
-let sequelize;
-if (env.DATABASE_URL) {
-    sequelize = new Sequelize(env.DATABASE_URL, dbSettings);
-} else {
-    sequelize = new Sequelize(dbSettings.database, dbSettings.username, dbSettings.password, dbSettings);
-}
-const db = {};
+const settings = require('../../config/settings');
 
-fs
+const { username, password, database } = settings.db;
+const sequelize = module.exports = settings.db.url ?
+    new Sequelize(settings.db.url, settings.db.options) :
+    new Sequelize(database, username, password, settings.db.options);
+
+const db = module.exports = fs
     .readdirSync(__dirname)
-    .filter(function(file) {
-        return (file.indexOf('.') !== 0) && (file !== 'index.js');
-    })
-    .forEach(function(file) {
-        const model = sequelize.import(path.join(__dirname, file));
-        db[model.name] = model;
-    });
+    .filter(file => file.indexOf('.') !== 0 && file !== 'index.js')
+    .map (file => sequelize.import(path.join(__dirname, file)))
+    .map (model => ({ [model.name]: model }))
+    .reduce ((acc, curr) => Object.assign (acc, curr), {});
 
-Object.keys(db).forEach(function(modelName) {
-    if ('associate' in db[modelName]) {
-        db[modelName].associate(db);
-    }
-});
+Object.values(db).forEach(
+    model => model.associate && model.associate(db)
+);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-module.exports = db;
