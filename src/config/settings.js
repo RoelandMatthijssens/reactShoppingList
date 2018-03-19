@@ -61,7 +61,7 @@ const deepAssign = (target, ... sources) => {
             }
 
             if ( typeof target[key] !== typeof source[key] ) {
-                let msg = 'Type mismatch when merging key: `' + key + '`';
+                let msg = `Type mismatch when merging key: '${key}'`;
                 throw new Error(msg);
             }
 
