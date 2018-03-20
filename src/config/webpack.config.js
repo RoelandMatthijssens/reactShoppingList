@@ -21,7 +21,7 @@ module.exports = {
 	},
 	output: {
 		filename: 'js/[name].js',
-		path: path.resolve (__dirname, 'build/dist'),
+		path: path.resolve ('./build/dist'),
 		publicPath: isProd ? '/' : 'http://localhost:3000/'
 	},
 	module: {
