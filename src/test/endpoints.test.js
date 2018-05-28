@@ -1,6 +1,6 @@
 const original_fetch = require('node-fetch');
-const main = require('../back/main');
-const models = require('../back/models');
+const main = require('../main');
+const models = require('../models');
 
 const port = process.env.PORT || 8888;
 const base = 'http://localhost:' + port;

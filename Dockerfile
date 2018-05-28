@@ -12,5 +12,3 @@ RUN set -xe \
 
 CMD []
 ENTRYPOINT ["npm", "run", "start"]
-
-EXPOSE 8000
