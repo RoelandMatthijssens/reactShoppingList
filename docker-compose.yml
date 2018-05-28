@@ -5,6 +5,6 @@ services:
     build:
       context: .
     ports:
-      - "8000:8000"
-    # volumes:
-    #   - ./:/data/src
+        - "8000:8000"
+    volumes:
+      - ./src:/data/src

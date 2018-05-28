@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const settings = require('../../config/settings');
+const settings = require('../config/settings');
 
 const { username, password, database } = settings.db;
 const sequelize = module.exports = settings.db.url ?

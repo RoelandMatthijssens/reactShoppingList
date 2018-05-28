@@ -27,7 +27,7 @@ defaults[PROD] = {
 };
 
 defaults[DEV] = {
-    port: 8080
+    port: 8000
 };
 
 defaults[TEST] = {
