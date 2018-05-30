@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-    const ShoppingListItem = sequelize.define('ShoppingListItem', {
+    const Purchase = sequelize.define('Purchase', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -15,10 +15,10 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    ShoppingListItem.associate = models => {
-        ShoppingListItem.belongsTo(models.Product, { foreignKey: 'itemId', targetKey: 'id' });
-        ShoppingListItem.belongsTo(models.ShoppingList, { foreignKey: 'shoppingListId', targetKey: 'id' });
+    Purchase.associate = models => {
+        Purchase.belongsTo(models.Product, { foreignKey: 'productId', targetKey: 'id' });
+        Purchase.belongsTo(models.ShoppingList, { foreignKey: 'shoppingListId', targetKey: 'id' });
     };
 
-    return ShoppingListItem;
+    return Purchase;
 };
