@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
 
     ShoppingList.associate = models => {
         ShoppingList.belongsToMany(models.Product, {
-            through: models.ShoppingListItem,
+            through: models.Purchase,
             foreignKey: 'shoppingListId'
         });
     };
