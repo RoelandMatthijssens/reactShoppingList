@@ -13,7 +13,7 @@ class Household{
     +String location
 }
 
-class Item{
+class Product{
     +String name
     +String image
     +Float price
@@ -25,6 +25,6 @@ class ShoppingList{
 User "*" --> "*" ShoppingList: hasAccessTo
 User "*" --> "*" Household: belongsTo
 Household "*" --> "*" ShoppingList: hasAccessTo
-ShoppingList "*" --> "*" Item: contains
+ShoppingList "*" --> "*" Product: contains
 
 @enduml
