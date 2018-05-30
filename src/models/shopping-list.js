@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     ShoppingList.associate = models => {
-        ShoppingList.belongsToMany(models.Item, {
+        ShoppingList.belongsToMany(models.Product, {
             through: models.ShoppingListItem,
             foreignKey: 'shoppingListId'
         });

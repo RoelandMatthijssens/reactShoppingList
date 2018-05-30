@@ -5,7 +5,7 @@ const settings = require('./config/settings');
 const models = require('./models');
 
 const routeDefinitions = [
-    './routes/items',
+    './routes/products',
     './routes/shopping-list',
     './routes/users'
 ];
