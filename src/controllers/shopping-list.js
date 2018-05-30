@@ -5,20 +5,20 @@ const Models = require('../models');
 
 Object.assign(exports, restify.restify(Models.ShoppingList));
 
-exports.showItems = (req, res) => {
+exports.showProducts = (req, res) => {
     Models.ShoppingList
         .findById(req.params.id)
-        .then(list => list.getItems())
-        .then(items => res.json(items))
+        .then(list => list.getProducts())
+        .then(products => res.json(products))
         .catch(err => res.status(400).send(err));
 };
 
-exports.addItem = (req, res) => {
+exports.addProduct = (req, res) => {
     Promise.all([
         Models.ShoppingList.findById(req.params.id),
-        Models.Item.findById(req.body.itemId)
+        Models.Product.findById(req.body.productId)
     ])
-        .then(([list, item]) => {list.addItem(item); return item;})
-        .then(item => res.json(item))
+        .then(([list, product]) => {list.addProduct(product); return product;})
+        .then(product => res.json(product))
         .catch(err => res.status(400).send(err));
 };

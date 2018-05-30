@@ -11,7 +11,7 @@ module.exports = function(app) {
         .post(lists.update)
         .delete(lists.destroy);
 
-    app.route('/shopping-lists/:id/items')
-        .get(lists.showItems)
-        .post(lists.addItem);
+    app.route('/shopping-lists/:id/products')
+        .get(lists.showProducts)
+        .post(lists.addProduct);
 };

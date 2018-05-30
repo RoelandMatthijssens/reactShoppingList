@@ -3,4 +3,4 @@
 const restify = require('../utils/restify');
 const Models = require('../models');
 
-Object.assign(exports, restify.restify(Models.Item));
+Object.assign(exports, restify.restify(Models.Product));
