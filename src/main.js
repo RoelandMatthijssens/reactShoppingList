@@ -7,6 +7,7 @@ const models = require('./models');
 const routeDefinitions = [
     './routes/products',
     './routes/shopping-lists',
+    './routes/purchases',
     './routes/users'
 ];
 
